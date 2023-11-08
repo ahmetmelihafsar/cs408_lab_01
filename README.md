@@ -15,7 +15,7 @@ You need Python 3.x and pip installed on your machine. You can download Python f
 Clone the repository to your local machine.
 
 ```
-git clone https://github.com/yourusername/my-tkinter-app.git
+git clone https://github.com/ahmetmelihafsar/my-tkinter-app.git
 ```
 
 Navigate to the project directory.
@@ -53,4 +53,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 * Python
 * Tkinter
-* etc
+* socket library
