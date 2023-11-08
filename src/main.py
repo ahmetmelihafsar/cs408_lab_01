@@ -2,6 +2,7 @@ import tkinter as tk
 from ui import UI
 from network import Network
 
+
 class Main:
     def __init__(self):
         self.root = tk.Tk()
@@ -17,6 +18,7 @@ class Main:
 
     def run(self):
         self.root.mainloop()
+
 
 if __name__ == "__main__":
     main = Main()

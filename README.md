@@ -14,19 +14,19 @@ You need Python 3.x and pip installed on your machine. You can download Python f
 
 Clone the repository to your local machine.
 
-```
+```bash
 git clone https://github.com/ahmetmelihafsar/cs408_lab_01.git
 ```
 
 Navigate to the project directory.
 
-```
+```bash
 cd cs408_lab_01
 ```
 
 Run the application.
 
-```
+```bash
 python src/main.py
 ```
 
@@ -38,12 +38,12 @@ When you enter the IP, port, and message and click the connect button, the appli
 
 ## Built With
 
-* [Python](https://www.python.org/)
-* [Tkinter](https://docs.python.org/3/library/tkinter.html)
+- [Python](https://www.python.org/)
+- [Tkinter](https://docs.python.org/3/library/tkinter.html)
 
 ## Authors
 
-* **Ahmet Melih Afşar** - *Developer* - [ahmetmelihafsar](https://github.com/ahmetmelihafsar)
+- **Ahmet Melih Afşar** - _Developer_ - [ahmetmelihafsar](https://github.com/ahmetmelihafsar)
 
 ## License
 
@@ -51,6 +51,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Python
-* Tkinter
-* socket library
+- Python
+- Tkinter
+- socket library
