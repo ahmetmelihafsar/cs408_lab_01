@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import scrolledtext
 
+import socket
+
 class UI:
     def __init__(self, root):
         self.root = root
@@ -39,21 +41,86 @@ class UI:
         connect_button = tk.Button(left_frame, text="Connect", command=self.connect)
         connect_button.grid(row=4, column=1, padx=10, pady=10, columnspan=2)
 
+        # set defaults
+        # self.ip_var.set("10.61.1.42")
+        # self.port_var.set("1555")
+        # self.email_var.set("ahmetmelih@sabanciuniv.edu")
+        # self.name_var.set("Ahmet Melih Afsar")
+
+
     def create_right_grid(self):
         right_frame = tk.Frame(self.root)
         right_frame.grid(row=0, column=1, padx=10, pady=10)
 
-        self.output_box = scrolledtext.ScrolledText(right_frame, width=30, height=10)
+        self.output_box = scrolledtext.ScrolledText(right_frame, width=60, height=10)
         self.output_box.pack()
 
     def connect(self):
         ip = self.ip_var.get()
         port = self.port_var.get()
-        msg = self.email_var.get()
+        email = self.email_var.get()
+        name = self.name_var.get()
+        
+        # now we open socket
+        self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        try:
+            self.socket.connect((ip, int(port)))
+        except:
+            self.output_box.insert(tk.END,"Problem occurred while connecting...\n")
+            return
+        
+        
+        self.output_box.insert(tk.END,"Connection established...\n")
+        
+        
+        # Send my email and full name
+        msg_to_send = f"{email} {name}"
+        self.socket.sendall(msg_to_send.encode())
+        
+        self.output_box.insert(tk.END,f"Message sent: {msg_to_send}\n")
+        # receive data
+        data = self.socket.recv(1024)
+        
+        
+        # receive the data back to str
+        token = data.decode()
+        
+        # print the received data into the screen
+        self.output_box.insert(tk.END,f"Server: {token}\n")
+        
+        # now we will calculate answer to the server
+        # by using the digits of token in a circular way to shift chars in the email string
+        # and send it back to the server
+        
+        # first we will shift the chars in the email string
+        # by using token
+        shifted_email = ""
+        for i in range(len(email)):
+            shifted_email += chr(ord(email[i]) + int(token[i % len(token)]))
+            
+        # sum up the ascii values of each character in 
+        # the shifted string and send the resulting integer value
 
-        # Call the function to connect here
-        # For now, it just prints the inputs to the output box
-        self.output_box.insert(tk.END, f"IP: {ip}\nPort: {port}\nMessage: {msg}\n")
+        my_sum = 0
+        for char in shifted_email:
+            my_sum += ord(char)
+            
+        self.socket.sendall(f"{str(my_sum)} {name}".encode())
+        self.output_box.insert(tk.END,f"Message sent: {str(my_sum)} {name}\n")
+        
+        data2 = self.socket.recv(1024)
+        
+        self.output_box.insert(tk.END,f"Server: {data2.decode()}\n")
+        
+            
+            
+        # send the sum to the server
+        
+
+        
+        
+        
+
 
     def run(self):
         self.root.mainloop()
