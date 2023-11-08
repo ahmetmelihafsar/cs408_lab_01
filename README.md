@@ -15,13 +15,13 @@ You need Python 3.x and pip installed on your machine. You can download Python f
 Clone the repository to your local machine.
 
 ```
-git clone https://github.com/ahmetmelihafsar/my-tkinter-app.git
+git clone https://github.com/ahmetmelihafsar/cs408_lab_01.git
 ```
 
 Navigate to the project directory.
 
 ```
-cd my-tkinter-app
+cd cs408_lab_01
 ```
 
 Run the application.
@@ -34,7 +34,7 @@ python src/main.py
 
 The application has a user interface with two grids. The left grid contains labels and input boxes for IP, port, and message. It also has a connect button. The right grid contains a rich textbox for outputs.
 
-When you enter the IP, port, and message and click the connect button, the application calls a function. This function can be used to establish a network connection and send the message.
+When you enter the IP, port, and message and click the connect button, the application calls a function. This function is used to establish a network connection and send the message.
 
 ## Built With
 
