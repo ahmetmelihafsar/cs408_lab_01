@@ -1,4 +1,4 @@
-# My Tkinter App
+# Basic Form App
 
 This is a simple Python application that uses Tkinter to create a user interface for network operations.
 
